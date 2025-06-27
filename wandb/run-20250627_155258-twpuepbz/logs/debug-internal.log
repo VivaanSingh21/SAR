@@ -1,0 +1,15 @@
+{"time":"2025-06-27T15:52:58.448722044-04:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/biorobotics/DCS_testing/SAR/wandb/run-20250627_155258-twpuepbz/logs/debug-core.log"}
+{"time":"2025-06-27T15:52:58.657553807-04:00","level":"INFO","msg":"stream: created new stream","id":"twpuepbz"}
+{"time":"2025-06-27T15:52:58.65762551-04:00","level":"INFO","msg":"stream: started","id":"twpuepbz"}
+{"time":"2025-06-27T15:52:58.657693712-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"twpuepbz"}
+{"time":"2025-06-27T15:52:58.657752019-04:00","level":"INFO","msg":"sender: started","stream_id":"twpuepbz"}
+{"time":"2025-06-27T15:52:58.657832043-04:00","level":"INFO","msg":"handler: started","stream_id":"twpuepbz"}
+{"time":"2025-06-27T15:52:58.823510506-04:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-27T16:00:44.053076007-04:00","level":"INFO","msg":"stream: closing","id":"twpuepbz"}
+{"time":"2025-06-27T16:00:44.053149065-04:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-27T16:00:44.053213997-04:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-27T16:00:44.432069594-04:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-27T16:00:44.576233035-04:00","level":"INFO","msg":"handler: closed","stream_id":"twpuepbz"}
+{"time":"2025-06-27T16:00:44.576319686-04:00","level":"INFO","msg":"writer: Close: closed","stream_id":"twpuepbz"}
+{"time":"2025-06-27T16:00:44.576332821-04:00","level":"INFO","msg":"sender: closed","stream_id":"twpuepbz"}
+{"time":"2025-06-27T16:00:44.576498467-04:00","level":"INFO","msg":"stream: closed","id":"twpuepbz"}

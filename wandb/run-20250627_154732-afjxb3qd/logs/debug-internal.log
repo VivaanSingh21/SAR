@@ -1,0 +1,15 @@
+{"time":"2025-06-27T15:47:32.696584403-04:00","level":"INFO","msg":"stream: starting","core version":"0.20.1","symlink path":"/home/biorobotics/DCS_testing/SAR/wandb/run-20250627_154732-afjxb3qd/logs/debug-core.log"}
+{"time":"2025-06-27T15:47:32.927664871-04:00","level":"INFO","msg":"stream: created new stream","id":"afjxb3qd"}
+{"time":"2025-06-27T15:47:32.927727275-04:00","level":"INFO","msg":"stream: started","id":"afjxb3qd"}
+{"time":"2025-06-27T15:47:32.927726804-04:00","level":"INFO","msg":"handler: started","stream_id":"afjxb3qd"}
+{"time":"2025-06-27T15:47:32.927738529-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"afjxb3qd"}
+{"time":"2025-06-27T15:47:32.927800402-04:00","level":"INFO","msg":"sender: started","stream_id":"afjxb3qd"}
+{"time":"2025-06-27T15:47:33.331919255-04:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-27T15:51:41.518079116-04:00","level":"INFO","msg":"stream: closing","id":"afjxb3qd"}
+{"time":"2025-06-27T15:51:41.518156859-04:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-27T15:51:41.518315348-04:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-27T15:51:41.827641307-04:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-27T15:51:42.209755261-04:00","level":"INFO","msg":"handler: closed","stream_id":"afjxb3qd"}
+{"time":"2025-06-27T15:51:42.209840509-04:00","level":"INFO","msg":"writer: Close: closed","stream_id":"afjxb3qd"}
+{"time":"2025-06-27T15:51:42.209856625-04:00","level":"INFO","msg":"sender: closed","stream_id":"afjxb3qd"}
+{"time":"2025-06-27T15:51:42.21003729-04:00","level":"INFO","msg":"stream: closed","id":"afjxb3qd"}

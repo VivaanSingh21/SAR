@@ -14,6 +14,8 @@ from torch.distributions.utils import _standard_normal
 from common.logger_tb import Logger
 from common.logx import EpochLogger, setup_logger_kwargs
 from collections import deque
+from omegaconf import OmegaConf
+
 
 _ACTION_REPEAT = {
     'dmc.ball_in_cup.catch': 4, 'dmc.cartpole.swingup': 8,'dmc.cartpole.swingup_sparse': 4, 'dmc.cheetah.run': 4,
@@ -63,6 +65,8 @@ def read_config(args, config_dir):
     config['train_params']['eval_freq'] = config['steps_per_epoch'] // config['train_params']['action_repeat']
     config['train_params']['total_steps'] = config['train_params']['total_steps'] // config['train_params']['action_repeat']
     return config
+
+
 
 
 def overwrite_config(config: dict, args: dict):

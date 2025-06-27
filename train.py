@@ -1,12 +1,13 @@
 import time
 import numpy as np
 from collections import deque
+import wandb
 
 import common.utils as utils
 
-def evaluate(test_env, agent, logger, video, num_eval_episodes, start_time, action_repeat, num_episode, step):
+def evaluate(test_env, agent, logger, video, num_eval_episodes, start_time, action_repeat, num_episode, step, total_len):
 
-    def eval(num, env, agent, logger, video, num_episodes, step, start_time, action_repeat, num_episode):
+    def eval(num, env, agent, logger, video, num_eval_episodes, step, start_time, action_repeat, num_episode,total_len):
         all_ep_rewards = []
         all_ep_length = []
         # carla metrics:
@@ -16,9 +17,9 @@ def evaluate(test_env, agent, logger, video, num_eval_episodes, start_time, acti
         steer = 0.
         brake = 0.
         count = 0
-        do_carla_metrics = True
+        do_carla_metrics = False
         # loop num_episodes
-        for episode in range(num_episodes):
+        for episode in range(num_eval_episodes):
             obs = env.reset()
             dist_driven_this_episode = 0.
             #video.init(enabled=(episode == 0))
@@ -44,6 +45,9 @@ def evaluate(test_env, agent, logger, video, num_eval_episodes, start_time, acti
             all_ep_rewards.append(episode_reward)
             all_ep_length.append(episode_length)
 
+        print(f"Printing evaluation metrics \n /n episode rewards{np.max(all_ep_rewards)} \n/n  # of episodes {step}")
+        wandb.log({"Eval Reward(Max Reward)": np.max(all_ep_rewards)}, step = step)
+        wandb.log({"Eval Reward(Average Reward)": np.mean(all_ep_rewards)}, step = step)
         # record log
         # metrics:
         if do_carla_metrics:
@@ -59,19 +63,19 @@ def evaluate(test_env, agent, logger, video, num_eval_episodes, start_time, acti
             print('steer: {}'.format(steer / count))
             print('brake: {}'.format(brake / count))
             print('---------------------------------')
-        test_info = {
-            ("TestEpRet%d" % num): mean,
-            ("TestStd%d" % num): std,
-            ("TestBestEpLen%d" % num): best,
-            "DistanceEp": np.mean(distance_driven_each_episode),
-            "Crash_intensity" : crash_intensity / num_episodes,
-            "Steer" : steer / count,
-            "Brake" : brake / count,
-            'Episode': num_episode,
-            'Time': (time.time() - start_time) / 3600,
-        }
+            test_info = {
+                ("TestEpRet%d" % num): mean,
+                ("TestStd%d" % num): std,
+                ("TestBestEpLen%d" % num): best,
+                "DistanceEp": np.mean(distance_driven_each_episode),
+                "Crash_intensity" : crash_intensity / num_episodes,
+                "Steer" : steer / count,
+                "Brake" : brake / count,
+                'Episode': num_episode,
+                'Time': (time.time() - start_time) / 3600,
+            }
 
-        utils.log(logger, 'eval_agent', test_info, step)
+            utils.log(logger, 'eval_agent', test_info, step)
         #video.save('%d.mp4' % step)
 
 
@@ -79,11 +83,11 @@ def evaluate(test_env, agent, logger, video, num_eval_episodes, start_time, acti
         # test_env is a list
         for num, t_env in enumerate(test_env):
             eval(num, t_env, agent, logger, video, num_eval_episodes,
-                 step, start_time, action_repeat, num_episode)
+                 step, start_time, action_repeat, num_episode,total_len)
     else:
         # test_env is an environment
         eval(0, test_env, agent, logger, video, num_eval_episodes,
-             step, start_time, action_repeat, num_episode)
+             step, start_time, action_repeat, num_episode, total_len)
 
 
 
@@ -99,8 +103,10 @@ def train_agent(train_envs, test_env, agent, replay_buffer, logger, video, model
     replay_buffer.add_obs(o)
     # import pdb
     # pdb.set_trace()
+    counter = 0
 
     for step in range(1, total_steps + 1):
+        #print(total_steps)
 
         # sample action for data collection
         if step < init_steps:
@@ -110,7 +116,7 @@ def train_agent(train_envs, test_env, agent, replay_buffer, logger, video, model
                 a = agent.select_action(o)
 
         # run training update
-        if step >= init_steps and step % num_updates == 0:
+        if step >= init_steps and step % num_updates == 0 and not test: #remove this and not test
             for _ in range(num_updates):
                 agent.update(replay_buffer, logger, step, step % 500 == 0)
 
@@ -125,7 +131,12 @@ def train_agent(train_envs, test_env, agent, replay_buffer, logger, video, model
 
         o = o2
 
+        
+
+   
+        
         if done:
+            #print(counter)
             train_info = dict(EpRet=episode_reward, EpLen=episode_step, EpNum=episode)
             utils.log(logger, 'train_agent', train_info, step)
             # logger['tb'].dump(step)
@@ -145,12 +156,12 @@ def train_agent(train_envs, test_env, agent, replay_buffer, logger, video, model
         if step % eval_freq == 0 and step > init_steps and test:
 
             evaluate(test_env, agent, logger, video, num_eval_episodes,
-                     start_time, action_repeat, episode, step)
+                     start_time, action_repeat, episode,step, agent.total_time_steps)
 
             print('Update Extr Times: %s Update Critic Times: %d Update Actor Times: %d' % (
                 agent.update_extr_total_steps, agent.update_critic_steps, agent.update_actor_steps
             ))
-            agent.print_log(logger['sp'],
+            """agent.print_log(logger['sp'],
                             test_env,
                             step // eval_freq,
                             step,
@@ -158,6 +169,6 @@ def train_agent(train_envs, test_env, agent, replay_buffer, logger, video, model
                             test,
                             start_time,
                             eval_freq * action_repeat / (time.time() - epoch_start_times))
-
+"""
             if save_model and step // eval_freq == save_model_freq:
                 agent.save(model_dir, step)

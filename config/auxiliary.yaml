@@ -1,3 +1,4 @@
+
 # auxiliary
 cresp:
   extr_latent_dim: 50
@@ -15,7 +16,7 @@ cresp:
   opt_num: 5
   num_sample: 256
   temperature: 0.1
-  discount_of_rs: 0.8
+  discount_of_rs: 0.99
 # auxiliary
 sar:
   extr_latent_dim: 50
@@ -33,4 +34,4 @@ sar:
   opt_num: 5
   num_sample: 256
   temperature: 0.1
-  discount_of_rs: 0.8
+  discount_of_rs: 0.99

@@ -1,0 +1,30 @@
+2025-06-27 16:02:00,239 INFO    MainThread:8863 [wandb_setup.py:_flush():81] Current SDK version is 0.20.1
+2025-06-27 16:02:00,240 INFO    MainThread:8863 [wandb_setup.py:_flush():81] Configure stats pid to 8863
+2025-06-27 16:02:00,240 INFO    MainThread:8863 [wandb_setup.py:_flush():81] Loading settings from /home/biorobotics/.config/wandb/settings
+2025-06-27 16:02:00,240 INFO    MainThread:8863 [wandb_setup.py:_flush():81] Loading settings from /home/biorobotics/DCS_testing/SAR/wandb/settings
+2025-06-27 16:02:00,240 INFO    MainThread:8863 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-06-27 16:02:00,241 INFO    MainThread:8863 [wandb_init.py:setup_run_log_directory():703] Logging user logs to /home/biorobotics/DCS_testing/SAR/wandb/run-20250627_160200-97wv1x82/logs/debug.log
+2025-06-27 16:02:00,241 INFO    MainThread:8863 [wandb_init.py:setup_run_log_directory():704] Logging internal logs to /home/biorobotics/DCS_testing/SAR/wandb/run-20250627_160200-97wv1x82/logs/debug-internal.log
+2025-06-27 16:02:00,241 INFO    MainThread:8863 [wandb_init.py:init():831] calling init triggers
+2025-06-27 16:02:00,241 INFO    MainThread:8863 [wandb_init.py:init():836] wandb.init called with sweep_config: {}
+config: {'env': 'dmc.cheetah.run', 'agent': 'curl', 'base': 'sac', 'auxiliary': 'cresp', 'steps_per_epoch': 8000, 'max_ep_len': 1000, 'evaluation': False, 'wandb_api_key': '77a28a62dfa6134ec25161511f1049fa8fec49da', 'setting': {'frame_stack': 3, 'num_sources': 2, 'background_dataset_path': '/home/biorobotics/Downloads/DAVIS/JPEGImages/480p', 'difficulty': 'easy', 'dynamic': True, 'distract_mode': 'train', 'background': True, 'camera': False, 'color': False, 'color_scale': 0.1, 'test_color_scale': 0.1, 'camera_scale': 0.1, 'test_camera_scale': 0.1, 'num_videos': 4, 'seed': 0}, 'buffer_params': {'capacity': 100000, 'nstep': 1, 'nstep_of_rsd': 5, 'gamma': 0.99, 'save_buffer': False, 'image_size': 84}, 'agent_base_params': {'num': 2, 'action_repeat': 4, 'actor_update_freq': 2, 'update_to_data': 1, 'critic_target_update_freq': 2, 'extr_update_via_qfloss': True, 'extr_update_freq_via_qfloss': 1, 'actor_update_mode': 'sum', 'num_sources': 2}, 'extr_params': {'num_layers': 4, 'num_filters': 32, 'num_fc': 2, 'extr_latent_dim': 50, 'extr_tau': 0.05, 'targ_extr': 1}, 'auxiliary_params': {'extr_latent_dim': 50, 'nstep_of_rsd': 5, 'hidden_dim': 1024, 'l': 2, 'act_seq_out_dim': 5, 'omg_seq_out_dim': 5, 'output_dim': 7, 'rs_fc': True, 'extr_lr': 0.0005, 'extr_beta': 0.9, 'omega_opt_mode': 'min_mu', 'opt_mode': 'max', 'opt_num': 5, 'num_sample': 16, 'temperature': 0.1, 'discount_of_rs': 0.8}, 'agent_params': {'extr_lr': 0.0005, 'extr_beta': 0.9, 'image_pad': 4}, 'algo_params': {'alpha_lr': 0.0005, 'critic_lr': 0.0005, 'critic_beta': 0.9, 'critic_type': 'ensemble', 'actor_lr': 0.0005, 'actor_beta': 0.9, 'alpha_beta': 0.5, 'critic_tau': 0.01, 'num_q': 2, 'num_targ_q': 2, 'hidden_dim': 1024, 'l': 2, 'extr_latent_dim': 50, 'actor_log_std_min': -5, 'actor_log_std_max': 2, 'init_temperature': 0.1, 'std_clip': 0.3}, 'train_params': {'total_steps': 500000, 'init_steps': 100, 'action_repeat': 4, 'eval_freq': 2000, 'test': True, 'num_eval_episodes': 10, 'save_model': True, 'save_model_freq': 5}, 'data_aug': 'shift', '_wandb': {}}
+2025-06-27 16:02:00,241 INFO    MainThread:8863 [wandb_init.py:init():872] starting backend
+2025-06-27 16:02:00,449 WARNING MainThread:8863 [wandb_init.py:init():1613] [no run ID] interrupted
+Traceback (most recent call last):
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 1609, in init
+    return wi.init(run_settings, run_config, run_printer)
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/wandb_init.py", line 874, in init
+    service = self._wl.ensure_service()
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/wandb_setup.py", line 336, in ensure_service
+    self._connection = service_connection.connect_to_service(self._settings)
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/lib/service_connection.py", line 37, in connect_to_service
+    return _start_and_connect_service(settings)
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/lib/service_connection.py", line 72, in _start_and_connect_service
+    proc.start()
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/service/service.py", line 242, in start
+    self._launch_server()
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/service/service.py", line 234, in _launch_server
+    self._wait_for_ports(fname, proc=internal_proc)
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/service/service.py", line 110, in _wait_for_ports
+    time.sleep(0.2)
+KeyboardInterrupt

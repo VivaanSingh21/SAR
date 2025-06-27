@@ -64,7 +64,7 @@ def set_dcs_multisources(domain_name, task_name, image_size, action_repeat,
                 num_videos = suite_utils.DIFFICULTY_NUM_VIDEOS[difficulty]
             background_kwargs = suite_utils.get_background_kwargs(
                 domain_name, num_videos, dynamic, background_dataset_path, distract_mode)
-            background_kwargs['start_idx'] = video_start_idxs[i]
+            #background_kwargs['start_idx'] = video_start_idxs[i]
 
         if camera:
             if camera_scale is None:
@@ -94,8 +94,10 @@ def set_dcs_multisources(domain_name, task_name, image_size, action_repeat,
     background_kwargs, camera_kwargs, color_kwargs = None, None, None
 
     if test_background:
+        
         background_kwargs = suite_utils.get_background_kwargs(
             domain_name, None, dynamic, background_dataset_path, 'val')
+        print("BACKGROUND KWARGS", background_kwargs)
 
     if test_camera:
         if test_camera_scale is None:

@@ -20,14 +20,19 @@ torch.backends.cudnn.benchmark = True
 from agent import *
 from algo import *
 from auxiliary import *
-from CARLA_.PythonAPI.carla.agents.navigation.carla_env import CarlaEnv
-
+import wandb
 _AVAILABLE_AGENT = {'drq': DrQAgent, 'curl': CurlAgent}
 _AVAILABLE_AUXILIARY = {'cresp': CRESP, 'sar': SAR}
 _AVAILABLE_ALGORITHM = {'sac': SAC, 'td3': TD3}
 
 
 def run(args, device, work_dir, config):
+    print(type(config))
+    wandb.init(
+        project="SAR-test-run",
+        name = config["auxiliary"],
+        config=config
+    )
     if args.seed == -1: 
         args.__dict__["seed"] = np.random.randint(1, 1000000)
     utils.set_seed_everywhere(args.seed)
@@ -55,24 +60,7 @@ def run(args, device, work_dir, config):
             **config['setting']
         )
         obs_shape, pre_aug_obs_shape = obs_dict
-    elif domain == "carla":
-        print("Runing carla env...")
-        env = CarlaEnv(
-            render_display=args.render,  # for local debugging only
-            display_text=args.render,  # for local debugging only
-            changing_weather_speed=0.1,  # [0, +inf)
-            rl_image_size= config['buffer_params']['image_size'],
-            max_episode_steps=1000,
-            frame_skip=config['train_params']['action_repeat'],
-            is_other_cars=True,
-            port= args.port
-        )
-        env = utils.FrameStack(env, k=args.frame_stack)
-        train_envs = []
-        train_envs.append(env)
-        test_env = train_envs
-        obs_shape, pre_aug_obs_shape = (9, 84, 420), (3, 84, 420)
-
+    
     #obs_shape, pre_aug_obs_shape = obs_dict
     #print(obs_shape, pre_aug_obs_shape)
     action_shape = train_envs[0].action_space.shape
@@ -100,6 +88,8 @@ def run(args, device, work_dir, config):
     config['base'] = _AVAILABLE_ALGORITHM[args.base]
     agent = init_agent(_AVAILABLE_AGENT[args.agent], config)
 
+
+
     # Train Agent
     train_agent(train_envs=train_envs,
                 test_env=test_env,
@@ -124,8 +114,18 @@ if __name__ == '__main__':
     device = torch.device(cuda_id if args.cuda else "cpu")
     print(args.seed_list)
     for i in args.seed_list:
+      
         work_dir = Path.cwd()
         config = utils.read_config(args, work_dir / args.config_dir)
+        print(config['auxiliary'])
         torch.multiprocessing.set_start_method('spawn', force=True)
         args.seed, config['setting']['seed'] = i, i
+        assert config['wandb_api_key'], "Put wandb key in common.yaml"
+        wandb_api_key = config['wandb_api_key']
+
+        if wandb_api_key:
+
+            wandb.login(key=wandb_api_key)
+        else:
+            print("wandb api key not found in common.yaml")
         run(args, device, work_dir, config)

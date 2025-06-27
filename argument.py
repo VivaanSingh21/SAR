@@ -31,7 +31,7 @@ def parse_args():
     parser.add_argument('--test_background', '-tbg', default=True, action='store_true')
     parser.add_argument('--test_camera', '-tca', default=False, action='store_true')
     parser.add_argument('--test_color', '-tco', default=False, action='store_true')
-    parser.add_argument('--batch_size', default=128, type=int)
+    parser.add_argument('--batch_size', default=256, type=int)
 
     """Reset the initial hyperparameters"""
     parser.add_argument('--disenable_default', default=False, action='store_true')

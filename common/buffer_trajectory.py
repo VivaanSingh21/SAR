@@ -25,12 +25,12 @@ class BReplayBuffer(Dataset):
         self.rewards = np.zeros((capacity, 1), dtype=np.float32)
         self.not_dones = np.zeros((capacity, 1), dtype=np.float32)
         self.env_labels = np.zeros((capacity, 1), dtype=np.float32)
-        self.obs_idxes = np.ones(capacity, dtype=np.int) * -1
+        self.obs_idxes = np.ones(capacity, dtype=np.int64) * -1
 
         # save the start point and end point of an episode
-        self.ep_start_idxs = np.zeros((capacity,), dtype=np.int)
-        self.ep_end_idxs = np.zeros((capacity,), dtype=np.int)
-        self.ep_end_idxs_rew = np.zeros((capacity,), dtype=np.int)
+        self.ep_start_idxs = np.zeros((capacity,), dtype=np.int64)
+        self.ep_end_idxs = np.zeros((capacity,), dtype=np.int64)
+        self.ep_end_idxs_rew = np.zeros((capacity,), dtype=np.int64)
         # save episode num which can be used to update the agent
         self.ep_num_list = []
 

@@ -1,0 +1,245 @@
+Warning: Log dir /home/biorobotics/DCS_testing/SAR/data/dmc.cheetah.run/Dyn-Ba2-t-sar-curl-sac-euf_qf1-CFmax_5.7_min_mu_16-nrs5-rsfc0.8/Dyn-Ba2-t-sar-curl-sac-euf_qf1-CFmax_5.7_min_mu_16-nrs5-rsfc0.8_s0 already exists! Storing info there anyway.
+[32;1mLogging data to /home/biorobotics/DCS_testing/SAR/data/dmc.cheetah.run/Dyn-Ba2-t-sar-curl-sac-euf_qf1-CFmax_5.7_min_mu_16-nrs5-rsfc0.8/Dyn-Ba2-t-sar-curl-sac-euf_qf1-CFmax_5.7_min_mu_16-nrs5-rsfc0.8_s0/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "agent":	"curl",
+    "agent_base_params":	{
+        "action_repeat":	4,
+        "actor_update_freq":	2,
+        "actor_update_mode":	"sum",
+        "critic_target_update_freq":	2,
+        "extr_update_freq_via_qfloss":	1,
+        "extr_update_via_qfloss":	true,
+        "num":	2,
+        "num_sources":	2,
+        "update_to_data":	1
+    },
+    "agent_params":	{
+        "extr_beta":	0.9,
+        "extr_lr":	0.0005,
+        "image_pad":	4
+    },
+    "algo_params":	{
+        "actor_beta":	0.9,
+        "actor_log_std_max":	2,
+        "actor_log_std_min":	-5,
+        "actor_lr":	0.0005,
+        "alpha_beta":	0.5,
+        "alpha_lr":	0.0005,
+        "critic_beta":	0.9,
+        "critic_lr":	0.0005,
+        "critic_tau":	0.01,
+        "critic_type":	"ensemble",
+        "extr_latent_dim":	50,
+        "hidden_dim":	1024,
+        "init_temperature":	0.1,
+        "l":	2,
+        "num_q":	2,
+        "num_targ_q":	2,
+        "std_clip":	0.3
+    },
+    "auxiliary":	"sar",
+    "auxiliary_params":	{
+        "act_seq_out_dim":	5,
+        "discount_of_rs":	0.8,
+        "extr_beta":	0.9,
+        "extr_latent_dim":	50,
+        "extr_lr":	0.0005,
+        "hidden_dim":	1024,
+        "l":	2,
+        "nstep_of_rsd":	5,
+        "num_sample":	16,
+        "omega_opt_mode":	"min_mu",
+        "omg_seq_out_dim":	5,
+        "opt_mode":	"max",
+        "opt_num":	5,
+        "output_dim":	7,
+        "rs_fc":	true,
+        "temperature":	0.1
+    },
+    "base":	"sac",
+    "buffer_params":	{
+        "capacity":	100000,
+        "gamma":	0.99,
+        "image_size":	84,
+        "nstep":	1,
+        "nstep_of_rsd":	5,
+        "save_buffer":	false
+    },
+    "data_aug":	"shift",
+    "env":	"dmc.cheetah.run",
+    "evaluation":	false,
+    "exp_name":	"Dyn-Ba2-t-sar-curl-sac-euf_qf1-CFmax_5.7_min_mu_16-nrs5-rsfc0.8",
+    "extr_params":	{
+        "extr_latent_dim":	50,
+        "extr_tau":	0.05,
+        "num_fc":	2,
+        "num_filters":	32,
+        "num_layers":	4,
+        "targ_extr":	1
+    },
+    "max_ep_len":	1000,
+    "setting":	{
+        "background":	true,
+        "background_dataset_path":	"/home/biorobotics/Downloads/DAVIS/JPEGImages/480p",
+        "camera":	false,
+        "camera_scale":	0.1,
+        "color":	false,
+        "color_scale":	0.1,
+        "difficulty":	"easy",
+        "distract_mode":	"train",
+        "dynamic":	true,
+        "frame_stack":	3,
+        "num_sources":	2,
+        "num_videos":	4,
+        "seed":	0,
+        "test_camera_scale":	0.1,
+        "test_color_scale":	0.1
+    },
+    "steps_per_epoch":	8000,
+    "train_params":	{
+        "action_repeat":	4,
+        "eval_freq":	2000,
+        "init_steps":	100,
+        "num_eval_episodes":	10,
+        "save_model":	true,
+        "save_model_freq":	5,
+        "test":	true,
+        "total_steps":	500000
+    },
+    "wandb_api_key":	"77a28a62dfa6134ec25161511f1049fa8fec49da"
+}
+Runing DMC env...
+background: True, camera: False, color: False
+{'dataset_path': '/home/biorobotics/Downloads/DAVIS/JPEGImages/480p', 'dataset_videos': 'train', 'num_videos': 4, 'video_alpha': 1.0, 'ground_plane_alpha': 1.0, 'dynamic': True, 'shuffle_buffer_size': None}
+/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/gym/spaces/box.py:127: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  logger.warn(f"Box bound precision lowered by casting to {self.dtype}")
+{'dataset_path': '/home/biorobotics/Downloads/DAVIS/JPEGImages/480p', 'dataset_videos': 'train', 'num_videos': 4, 'video_alpha': 1.0, 'ground_plane_alpha': 1.0, 'dynamic': True, 'shuffle_buffer_size': None}
+BACKGROUND KWARGS {'num_videos': None, 'video_alpha': 1.0, 'ground_plane_alpha': 1.0, 'dynamic': True, 'dataset_path': '/home/biorobotics/Downloads/DAVIS/JPEGImages/480p', 'dataset_videos': 'val', 'shuffle_buffer_size': None}
+{'dataset_path': '/home/biorobotics/Downloads/DAVIS/JPEGImages/480p', 'dataset_videos': 'val', 'num_videos': None, 'video_alpha': 1.0, 'ground_plane_alpha': 1.0, 'dynamic': True, 'shuffle_buffer_size': None}
+dmc.cheetah.run
+39200 50 1024 6
+Augment: RandomShiftsAug_84()
+AuxiliaryTask: CFAPredictor(
+  (aseq_fc): Sequential(
+    (0): Linear(in_features=30, out_features=5, bias=True)
+  )
+  (omeg_fc): Sequential(
+    (0): Linear(in_features=5, out_features=5, bias=True)
+  )
+  (rseq_fc): Sequential(
+    (0): Linear(in_features=5, out_features=5, bias=True)
+  )
+  (predictor): Sequential(
+    (0): Linear(in_features=60, out_features=1024, bias=True)
+    (1): Swish()
+    (2): Linear(in_features=1024, out_features=1024, bias=True)
+    (3): Swish()
+    (4): Linear(in_features=1024, out_features=14, bias=True)
+  )
+)
+Extractor: PixelExtractor(
+  (convs): ModuleList(
+    (0): Conv2d(9, 32, kernel_size=(3, 3), stride=(2, 2))
+    (1-3): 3 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+  )
+)
+Target Extractor: PixelExtractor(
+  (convs): ModuleList(
+    (0): Conv2d(9, 32, kernel_size=(3, 3), stride=(2, 2))
+    (1-3): 3 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+  )
+)
+Critic: EnsembleCritic(
+  (trunk): Sequential(
+    (0): Linear(in_features=39200, out_features=50, bias=True)
+    (1): LayerNorm((50,), eps=1e-05, elementwise_affine=True)
+  )
+  (q): Sequential(
+    (0): EnsembleLinear(in_features=56, out_features=1024, in_channels=2, bias=True)
+    (1): ReLU(inplace=True)
+    (2): EnsembleLinear(in_features=1024, out_features=1024, in_channels=2, bias=True)
+    (3): ReLU(inplace=True)
+    (4): EnsembleLinear(in_features=1024, out_features=1, in_channels=2, bias=True)
+  )
+)
+Actor: SGMLPActor(
+  (trunk): Sequential(
+    (0): Linear(in_features=39200, out_features=50, bias=True)
+    (1): LayerNorm((50,), eps=1e-05, elementwise_affine=True)
+  )
+  (pi_trunk): Sequential(
+    (0): Linear(in_features=50, out_features=1024, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=1024, out_features=1024, bias=True)
+    (3): ReLU(inplace=True)
+  )
+  (pi_mean): Sequential(
+    (0): Linear(in_features=1024, out_features=6, bias=True)
+  )
+  (pi_logstd): Sequential(
+    (0): Linear(in_features=1024, out_features=6, bias=True)
+  )
+)
+CURL: CURL(
+  (extr): PixelExtractor(
+    (convs): ModuleList(
+      (0): Conv2d(9, 32, kernel_size=(3, 3), stride=(2, 2))
+      (1-3): 3 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+    )
+  )
+  (trunk): Sequential(
+    (0): Linear(in_features=39200, out_features=50, bias=True)
+    (1): LayerNorm((50,), eps=1e-05, elementwise_affine=True)
+  )
+  (extr_targ): PixelExtractor(
+    (convs): ModuleList(
+      (0): Conv2d(9, 32, kernel_size=(3, 3), stride=(2, 2))
+      (1-3): 3 x Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1))
+    )
+  )
+  (trunk_targ): Sequential(
+    (0): Linear(in_features=39200, out_features=50, bias=True)
+    (1): LayerNorm((50,), eps=1e-05, elementwise_affine=True)
+  )
+)
+<class 'numpy.ndarray'>
+Traceback (most recent call last):
+  File "launch.py", line 131, in <module>
+    run(args, device, work_dir, config)
+  File "launch.py", line 94, in run
+    train_agent(train_envs=train_envs,
+  File "/home/biorobotics/DCS_testing/SAR/train.py", line 123, in train_agent
+    o2, r, done, infos = env.step(a)
+  File "/home/biorobotics/DCS_testing/SAR/common/wrappers.py", line 192, in step
+    obs, reward, done, info = self.env.step(action)
+  File "/home/biorobotics/DCS_testing/SAR/common/wrappers.py", line 145, in step
+    time_step = self._env.step(action)
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/distracting_control/background.py", line 313, in step
+    self._apply()
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/distracting_control/background.py", line 356, in _apply
+    ctx.call(
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/dm_control/_render/executor/render_executor.py", line 138, in call
+    return func(*args, **kwargs)
+KeyboardInterrupt
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/dm_control/_render/executor/render_executor.py", line 144, in terminate
+    cleanup_callable()
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/dm_control/_render/base.py", line 102, in _free_on_executor_thread
+    assert sys.getrefcount(patient) == sys.getrefcount(dummy)
+AssertionError
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/lib/service_connection.py", line 90, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/lib/service_connection.py", line 218, in teardown
+    self._router.join()
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/threading.py", line 1011, in join
+    self._wait_for_tstate_lock()
+  File "/home/biorobotics/miniconda3/envs/sar_env/lib/python3.8/threading.py", line 1027, in _wait_for_tstate_lock
+    elif lock.acquire(block, timeout):
+KeyboardInterrupt

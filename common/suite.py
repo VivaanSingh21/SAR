@@ -117,6 +117,7 @@ def load(domain_name,
     if background_kwargs:
       # Overwrite kwargs with those passed here.
       final_background_kwargs.update(background_kwargs)
+    print(final_background_kwargs)
     env = background.DistractingBackgroundEnv(env, **final_background_kwargs)
 
   # Apply camera distractions.

@@ -25,8 +25,11 @@
 
 #export PYTHONPATH="/opt/carla-simulator/PythonAPI/carla/dist/carla-0.9.8-py3.5-linux-x86_64.egg"
 # Carla setting
+
+
+#To test cresp algorithm - change auxiliary in line 34 to cresp
 python launch.py \
---env carla.highway.map04 \
+--env dmc.cheetah.run  \
 --agent curl --base sac \
 --auxiliary sar \
 --num_sources 2 \

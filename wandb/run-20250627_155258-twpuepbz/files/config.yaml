@@ -1,0 +1,137 @@
+_wandb:
+    value:
+        cli_version: 0.20.1
+        m: []
+        python_version: 3.8.20
+        t:
+            "1":
+                - 1
+                - 41
+                - 53
+            "2":
+                - 1
+                - 41
+                - 53
+            "3":
+                - 13
+                - 16
+                - 55
+                - 61
+            "4": 3.8.20
+            "5": 0.20.1
+            "12": 0.20.1
+            "13": linux-x86_64
+agent:
+    value: curl
+agent_base_params:
+    value:
+        action_repeat: 4
+        actor_update_freq: 2
+        actor_update_mode: sum
+        critic_target_update_freq: 2
+        extr_update_freq_via_qfloss: 1
+        extr_update_via_qfloss: true
+        num: 2
+        num_sources: 2
+        update_to_data: 1
+agent_params:
+    value:
+        extr_beta: 0.9
+        extr_lr: 0.0005
+        image_pad: 4
+algo_params:
+    value:
+        actor_beta: 0.9
+        actor_log_std_max: 2
+        actor_log_std_min: -5
+        actor_lr: 0.0005
+        alpha_beta: 0.5
+        alpha_lr: 0.0005
+        critic_beta: 0.9
+        critic_lr: 0.0005
+        critic_tau: 0.01
+        critic_type: ensemble
+        extr_latent_dim: 50
+        hidden_dim: 1024
+        init_temperature: 0.1
+        l: 2
+        num_q: 2
+        num_targ_q: 2
+        std_clip: 0.3
+auxiliary:
+    value: sar
+auxiliary_params:
+    value:
+        act_seq_out_dim: 5
+        discount_of_rs: 0.8
+        extr_beta: 0.9
+        extr_latent_dim: 50
+        extr_lr: 0.0005
+        hidden_dim: 1024
+        l: 2
+        nstep_of_rsd: 5
+        num_sample: 16
+        omega_opt_mode: min_mu
+        omg_seq_out_dim: 5
+        opt_mode: max
+        opt_num: 5
+        output_dim: 7
+        rs_fc: true
+        temperature: 0.1
+base:
+    value: sac
+buffer_params:
+    value:
+        capacity: 100000
+        gamma: 0.99
+        image_size: 84
+        nstep: 1
+        nstep_of_rsd: 5
+        save_buffer: false
+data_aug:
+    value: shift
+env:
+    value: dmc.cheetah.run
+evaluation:
+    value: false
+extr_params:
+    value:
+        extr_latent_dim: 50
+        extr_tau: 0.05
+        num_fc: 2
+        num_filters: 32
+        num_layers: 4
+        targ_extr: 1
+max_ep_len:
+    value: 1000
+setting:
+    value:
+        background: true
+        background_dataset_path: /home/biorobotics/Downloads/DAVIS/JPEGImages/480p
+        camera: false
+        camera_scale: 0.1
+        color: false
+        color_scale: 0.1
+        difficulty: easy
+        distract_mode: train
+        dynamic: true
+        frame_stack: 3
+        num_sources: 2
+        num_videos: 4
+        seed: 0
+        test_camera_scale: 0.1
+        test_color_scale: 0.1
+steps_per_epoch:
+    value: 8000
+train_params:
+    value:
+        action_repeat: 4
+        eval_freq: 2000
+        init_steps: 1
+        num_eval_episodes: 10
+        save_model: true
+        save_model_freq: 5
+        test: true
+        total_steps: 500000
+wandb_api_key:
+    value: 77a28a62dfa6134ec25161511f1049fa8fec49da

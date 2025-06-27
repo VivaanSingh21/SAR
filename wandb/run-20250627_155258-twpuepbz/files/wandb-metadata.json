@@ -1,0 +1,99 @@
+{
+  "os": "Linux-5.4.0-150-generic-x86_64-with-glibc2.17",
+  "python": "CPython 3.8.20",
+  "startedAt": "2025-06-27T19:52:58.447945Z",
+  "args": [
+    "--env",
+    "dmc.cheetah.run",
+    "--agent",
+    "curl",
+    "--base",
+    "sac",
+    "--auxiliary",
+    "sar",
+    "--num_sources",
+    "2",
+    "--dynamic",
+    "-bg",
+    "-tbg",
+    "--disenable_default",
+    "--critic_lr",
+    "5e-4",
+    "--actor_lr",
+    "5e-4",
+    "--alpha_lr",
+    "5e-4",
+    "--extr_lr",
+    "5e-4",
+    "--targ_extr",
+    "1",
+    "--nstep_of_rsd",
+    "5",
+    "--num_sample",
+    "16",
+    "--batch_size",
+    "16",
+    "--opt_mode",
+    "max",
+    "--omega_opt_mode",
+    "min_mu",
+    "--rs_fc",
+    "--discount_of_rs",
+    "0.8",
+    "--extr_update_via_qfloss",
+    "True",
+    "--cuda_id",
+    "0",
+    "--port",
+    "4021",
+    "--exp_name",
+    "t",
+    "-s",
+    "0"
+  ],
+  "program": "launch.py",
+  "codePath": "launch.py",
+  "git": {
+    "remote": "https://github.com/DMU-XMU/SAR.git",
+    "commit": "3a8b1d119e0d70a87338d507ceb8bffd933050b7"
+  },
+  "email": "vivaan.singh21@gmail.com",
+  "root": "/home/biorobotics/DCS_testing/SAR",
+  "host": "Ayva",
+  "executable": "/home/biorobotics/miniconda3/envs/sar_env/bin/python",
+  "codePathLocal": "launch.py",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "gpu": "NVIDIA GeForce RTX 2080",
+  "gpu_count": 2,
+  "disk": {
+    "/": {
+      "total": "97827328000",
+      "used": "65091792896"
+    }
+  },
+  "memory": {
+    "total": "33583280128"
+  },
+  "cpu": {
+    "count": 8,
+    "countLogical": 16
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 2080",
+      "memoryTotal": "8589934592",
+      "cudaCores": 2944,
+      "architecture": "Turing",
+      "uuid": "GPU-55829586-863a-ee0c-4007-b95e93763799"
+    },
+    {
+      "name": "NVIDIA GeForce RTX 2080",
+      "memoryTotal": "8589934592",
+      "cudaCores": 2944,
+      "architecture": "Turing",
+      "uuid": "GPU-d4f355c9-a82c-18f4-dd15-75d79c3518f8"
+    }
+  ],
+  "cudaVersion": "11.8"
+}

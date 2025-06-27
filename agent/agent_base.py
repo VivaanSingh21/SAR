@@ -197,11 +197,11 @@ class AGENTBase(object, metaclass=abc.ABCMeta):
         logger.log_tabular('EpNum', average_only=True)
         logger.log_tabular('EpLen', average_only=True)
         
-        logger.log_tabular('DistanceEp', average_only=True) # calra
-        logger.log_tabular('Crash_intensity', average_only=True)
-        logger.log_tabular('Steer', average_only=True)
-        logger.log_tabular('Brake', average_only=True)
-        
+        #logger.log_tabular('DistanceEp', average_only=True) # calra
+        #logger.log_tabular('Crash_intensity', average_only=True)
+        #logger.log_tabular('Steer', average_only=True)
+        #logger.log_tabular('Brake', average_only=True)
+        """
         if test:
             if isinstance(test_env, list):
                 for i in range(len(test_env)):
@@ -221,7 +221,7 @@ class AGENTBase(object, metaclass=abc.ABCMeta):
         logger.log_tabular('Time', (time.time() - start_time)/3600)
         logger.log_tabular('FPS', epoch_fps)
         logger.dump_tabular()
-
+"""
     @abc.abstractmethod
     def _print_log(logger):
         raise NotImplementedError
