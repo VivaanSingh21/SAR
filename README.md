@@ -1,3 +1,9 @@
+#Instructions on how to run the code:#
+In run.sh change auxiliary to sar or cresp depending on which algorithm you want to run
+
+In common.yaml put your wandb access key
+
+
 # Sequential Action-Induced Invariant Representation for Reinforcement Learning
 
 
