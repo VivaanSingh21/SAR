@@ -3,6 +3,8 @@ In run.sh change auxiliary to sar or cresp depending on which algorithm you want
 
 In common.yaml put your wandb access key
 
+For Cartpole wingup set action repeat to 8 in line 79 of common.yaml, else keep set at 4
+
 
 # Sequential Action-Induced Invariant Representation for Reinforcement Learning
 
