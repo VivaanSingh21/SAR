@@ -1,4 +1,5 @@
 #Put your wandb api key in line 10 and uncomment out that line
+#If the env is Cartpole-wingup set action repeat to 8 in line 79, else keep set at 4
 
 env: dmc.cheetah.run
 agent: drq
